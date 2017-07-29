@@ -79,8 +79,8 @@ class App extends Component {
             /><br/>
             <TextField
                 value={query_c}
-                hintText="按文件编码查询"
-                floatingLabelText="文件编码"
+                hintText="文件编码"
+                floatingLabelText="按文件编码查询"
                 type="text"
                 onChange={e => this.updateQuery_c(e.target.value)}
             /><br/>
