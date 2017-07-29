@@ -173,7 +173,7 @@ class App extends Component {
                             href={doc.url}
                             target="_blank"
                             // label=""
-                            secondary={true}
+                            primary={true}
                             className="download-button"
                             icon={<FileCloudDownload />}
                         />
