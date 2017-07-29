@@ -4,6 +4,14 @@ import './App.css';
 import TextField from 'material-ui/TextField';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import FlatButton from 'material-ui/FlatButton';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -91,15 +99,34 @@ class App extends Component {
             />
 
         </div>
-        <div className="App-intro">
-          <ol>
+        {/*<div className="App-intro">*/}
+          {/*<ol>*/}
+            {/*{showingDocs.map(doc => (*/}
+                {/*<div>*/}
+                  {/*<li key={doc.index}>{doc.title} | {doc.index}</li>*/}
+                {/*</div>*/}
+            {/*))}*/}
+          {/*</ol>*/}
+        {/*</div>*/}
+        <Table style={{ width: "70%", marginLeft: "15%", marginRight: "15%" }}>
+          <TableHeader>
+            <TableRow>
+              <TableHeaderColumn>下载</TableHeaderColumn>
+              <TableHeaderColumn>文件名称</TableHeaderColumn>
+              <TableHeaderColumn>文件编码</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {showingDocs.map(doc => (
-                <div>
-                  <li key={doc.index}>{doc.title} | {doc.index}</li>
-                </div>
+              <TableRow>
+                <TableRowColumn><a href={doc.url}>下载</a></TableRowColumn>
+                <TableRowColumn>{doc.title}</TableRowColumn>
+                <TableRowColumn>{doc.index}</TableRowColumn>
+              </TableRow>
             ))}
-          </ol>
-        </div>
+
+          </TableBody>
+        </Table>
       </div>
     );
   }
