@@ -3,6 +3,7 @@ import escapeRegExp from 'escape-string-regexp'
 import './App.css';
 import TextField from 'material-ui/TextField';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import FlatButton from 'material-ui/FlatButton';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -35,9 +36,9 @@ class App extends Component {
     this.setState({ query_c: keyword.trim() });
   }
 
-  // clearQuery(query) {
-  //   this.setState({ query: '' })
-  // }
+  clearQuery(query) {
+    this.setState({ query_a: '', query_b: '', query_c: '' })
+  }
 
   render() {
 
@@ -63,22 +64,30 @@ class App extends Component {
         <div className="list-contacts">
 
             <TextField
+                value={query_a}
                 hintText="文件名称"
                 floatingLabelText="按文件名称查询 1"
                 type="text"
                 onChange={e => this.updateQuery_a(e.target.value)}
             /><br/>
             <TextField
+                value={query_b}
                 hintText="文件名称"
                 floatingLabelText="按文件名称查询 2"
                 type="text"
                 onChange={e => this.updateQuery_b(e.target.value)}
             /><br/>
             <TextField
+                value={query_c}
                 hintText="按文件编码查询"
                 floatingLabelText="文件编码"
                 type="text"
                 onChange={e => this.updateQuery_c(e.target.value)}
+            /><br/>
+            <FlatButton
+                label="重置查询条件"
+                secondary={true}
+                onClick={() => this.clearQuery()}
             />
 
         </div>
