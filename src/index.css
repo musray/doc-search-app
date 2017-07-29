@@ -186,3 +186,28 @@ body, .app {
     cursor: pointer;
     outline: none;
 }
+
+.layout-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.layout-search-bar {
+    flex: 1 0 20%;
+    margin-left: 20px;
+    /*background: gray;*/
+}
+
+.layout-search-result {
+    flex: 1 1 auto;
+    /*padding: 20px;*/
+    overflow: auto;
+}
+
+.download-button {
+    /*margin: 12px;*/
+    /*font-size: 0.5em;*/
+    width: 20%;
+    /*opacity: 0*/
+}
+

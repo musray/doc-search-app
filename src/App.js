@@ -12,6 +12,10 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
+import Badge from 'material-ui/Badge';
+import IconButton from 'material-ui/IconButton';
+import FileCloudDownload from 'material-ui/svg-icons/file/cloud-download';
+import RaisedButton from 'material-ui/RaisedButton';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -20,12 +24,62 @@ injectTapEventPlugin();
 class App extends Component {
   state = {
     docs: [
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold'},
-      {title: '你好', index: '12345678', platform: 'firmsys'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys'},
-      {title: '世界', index: 'abcdefgh', platform: 'hollias'}
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
+      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
+      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
+      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
+      {title: '世界', index: 'abcdefgh', platform: 'hollias', url: '/'}
     ],
     query_a: '',
     query_b: '',
@@ -67,10 +121,12 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>工程部文档搜索引擎<span className="big-icon">Beta</span></h2>
+          <h2>工程部文档搜索<span className="big-icon">Beta</span></h2>
         </div>
-        <div className="list-contacts">
 
+        <div className="layout-wrapper">
+
+          <div className="layout-search-bar">
             <TextField
                 value={query_a}
                 hintText="文件名称"
@@ -97,36 +153,43 @@ class App extends Component {
                 secondary={true}
                 onClick={() => this.clearQuery()}
             />
+          </div>
+
+          <div className="layout-search-result">
+            <Table style={{ width: "90%", marginLeft: "5%", marginRight: "5%" }}>
+              <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+                <TableRow>
+                  <TableHeaderColumn>下载链接</TableHeaderColumn>
+                  <TableHeaderColumn>文件名称</TableHeaderColumn>
+                  <TableHeaderColumn>文件版本</TableHeaderColumn>
+                  <TableHeaderColumn>文件编码</TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
+              <TableBody displayRowCheckbox={false}>
+                {showingDocs.map(doc => (
+                    <TableRow>
+                      <TableRowColumn>
+                        <RaisedButton
+                            href={doc.url}
+                            target="_blank"
+                            // label=""
+                            secondary={true}
+                            className="download-button"
+                            icon={<FileCloudDownload />}
+                        />
+                      </TableRowColumn>
+                      <TableRowColumn>{doc.title}</TableRowColumn>
+                      <TableRowColumn>{doc.ver}</TableRowColumn>
+                      <TableRowColumn>{doc.index}</TableRowColumn>
+                    </TableRow>
+                ))}
+
+              </TableBody>
+            </Table>
+          </div>
 
         </div>
-        {/*<div className="App-intro">*/}
-          {/*<ol>*/}
-            {/*{showingDocs.map(doc => (*/}
-                {/*<div>*/}
-                  {/*<li key={doc.index}>{doc.title} | {doc.index}</li>*/}
-                {/*</div>*/}
-            {/*))}*/}
-          {/*</ol>*/}
-        {/*</div>*/}
-        <Table style={{ width: "70%", marginLeft: "15%", marginRight: "15%" }}>
-          <TableHeader>
-            <TableRow>
-              <TableHeaderColumn>下载</TableHeaderColumn>
-              <TableHeaderColumn>文件名称</TableHeaderColumn>
-              <TableHeaderColumn>文件编码</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {showingDocs.map(doc => (
-              <TableRow>
-                <TableRowColumn><a href={doc.url}>下载</a></TableRowColumn>
-                <TableRowColumn>{doc.title}</TableRowColumn>
-                <TableRowColumn>{doc.index}</TableRowColumn>
-              </TableRow>
-            ))}
-
-          </TableBody>
-        </Table>
+        {/*<div className="list-contacts"></div>*/}
       </div>
     );
   }
