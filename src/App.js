@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import escapeRegExp from 'escape-string-regexp'
 import './App.css';
+import TextField from 'material-ui/TextField';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 class App extends Component {
   state = {
@@ -56,22 +62,22 @@ class App extends Component {
         </div>
         <div className="list-contacts">
 
-            <label>文件名称1</label>
-            <input
+            <TextField
+                hintText="文件名称"
+                floatingLabelText="按文件名称查询 1"
                 type="text"
-                className="search-contacts"
                 onChange={e => this.updateQuery_a(e.target.value)}
-            />
-            <label>文件名称2</label>
-            <input
+            /><br/>
+            <TextField
+                hintText="文件名称"
+                floatingLabelText="按文件名称查询 2"
                 type="text"
-                className="search-contacts"
                 onChange={e => this.updateQuery_b(e.target.value)}
-            />
-            <label>文件编码</label>
-            <input
+            /><br/>
+            <TextField
+                hintText="按文件编码查询"
+                floatingLabelText="文件编码"
                 type="text"
-                className="search-contacts"
                 onChange={e => this.updateQuery_c(e.target.value)}
             />
 
