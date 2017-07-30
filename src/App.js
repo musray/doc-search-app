@@ -107,16 +107,19 @@ class App extends Component {
           </div>
 
           <div className="layout-search-result">
+
+            <Badge
+                badgeContent={showingDocs.length === docs.length? "ALL": showingDocs.length}
+                primary={true}
+                style={{marginTop: "5px"}}
+            >
+              <NotificationsIcon />
+            </Badge>
+
             <Table style={{ width: "90%", marginLeft: "5%", marginRight: "5%" }}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
                   <TableHeaderColumn colSpan="4" style={{textAlign: "center"}}>
-                    <Badge
-                        badgeContent={showingDocs.length === docs.length? "ALL": showingDocs.length}
-                        primary={true}
-                    >
-                      <NotificationsIcon />
-                    </Badge>
                   </TableHeaderColumn>
                 </TableRow>
                 <TableRow>
