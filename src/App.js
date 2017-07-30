@@ -12,7 +12,8 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-// import Badge from 'material-ui/Badge';
+import Badge from 'material-ui/Badge';
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 // import IconButton from 'material-ui/IconButton';
 import FileCloudDownload from 'material-ui/svg-icons/file/cloud-download';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -55,8 +56,9 @@ class App extends Component {
 
     const { docs, query_a, query_b, query_c} = this.state;
     let showingDocs;
+    let hasQuery = query_a || query_b || query_c;
 
-    if (query_a || query_b || query_c) {
+    if (hasQuery) {
       const match_a = new RegExp(escapeRegExp(query_a), 'i');
       const match_b = new RegExp(escapeRegExp(query_b), 'i');
       const match_c = new RegExp(escapeRegExp(query_c), 'i');
@@ -108,8 +110,18 @@ class App extends Component {
             <Table style={{ width: "90%", marginLeft: "5%", marginRight: "5%" }}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
+                  <TableHeaderColumn colSpan="4" style={{textAlign: "center"}}>
+                    <Badge
+                        badgeContent={showingDocs.length === docs.length? "ALL": showingDocs.length}
+                        primary={true}
+                    >
+                      <NotificationsIcon />
+                    </Badge>
+                  </TableHeaderColumn>
+                </TableRow>
+                <TableRow>
                   <TableHeaderColumn>下载链接</TableHeaderColumn>
-                  <TableHeaderColumn>文件名称</TableHeaderColumn>
+                  <TableHeaderColumn>文件名称 </TableHeaderColumn>
                   <TableHeaderColumn>文件版本</TableHeaderColumn>
                   <TableHeaderColumn>文件编码</TableHeaderColumn>
                 </TableRow>
