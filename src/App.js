@@ -130,21 +130,20 @@ class App extends Component {
                 </TableRow>
               </TableHeader>
               <TableBody displayRowCheckbox={false}>
-                {showingDocs.map(doc => (
-                    <TableRow>
+                {showingDocs.map(({doc_name, doc_index, rev, url}) => (
+                    <TableRow key={doc_index}>
                       <TableRowColumn>
                         <RaisedButton
-                            href={doc.url}
+                            href={url}
                             target="_blank"
-                            // label=""
                             primary={true}
                             className="download-button"
                             icon={<FileCloudDownload />}
                         />
                       </TableRowColumn>
-                      <TableRowColumn>{doc.doc_name}</TableRowColumn>
-                      <TableRowColumn>{doc.rev}</TableRowColumn>
-                      <TableRowColumn>{doc.doc_index}</TableRowColumn>
+                      <TableRowColumn>{doc_name}</TableRowColumn>
+                      <TableRowColumn>{rev}</TableRowColumn>
+                      <TableRowColumn>{doc_index}</TableRowColumn>
                     </TableRow>
                 ))}
 
