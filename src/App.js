@@ -12,10 +12,12 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-import Badge from 'material-ui/Badge';
-import IconButton from 'material-ui/IconButton';
+// import Badge from 'material-ui/Badge';
+// import IconButton from 'material-ui/IconButton';
 import FileCloudDownload from 'material-ui/svg-icons/file/cloud-download';
 import RaisedButton from 'material-ui/RaisedButton';
+import documents from './data/doc-list.json';
+import * as _ from 'lodash';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -23,68 +25,15 @@ injectTapEventPlugin();
 
 class App extends Component {
   state = {
-    docs: [
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: 'hello react is awesome', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'hello react is good', index: '138576', platform: 'hollias', url: '/'},
-      {title: '基于华龙一号的安全级DCS系统设计方案', index: '12345678', platform: 'speedyhold', url: '/'},
-      {title: '你好', index: '12345678', platform: 'firmsys', url: '/'},
-      {title: 'world', index: 'abcdefgh', platform: 'firmsys', url: '/'},
-      {title: '世界', index: 'abcdefgh', platform: 'hollias', url: '/'}
-    ],
+    docs: [],
     query_a: '',
     query_b: '',
     query_c: ''
   };
+
+  componentDidMount() {
+    this.setState({docs: documents})
+  }
 
   updateQuery_a(keyword) {
     this.setState({ query_a: keyword.trim() });
@@ -112,9 +61,9 @@ class App extends Component {
       const match_b = new RegExp(escapeRegExp(query_b), 'i');
       const match_c = new RegExp(escapeRegExp(query_c), 'i');
       showingDocs = docs
-        .filter(doc => query_a ? match_a.test(doc.title) : true)
-        .filter(doc => query_b ? match_b.test(doc.title) : true)
-        .filter(doc => query_c ? match_c.test(doc.index) : true)
+        .filter(doc => query_a ? match_a.test(doc.doc_name) : true)
+        .filter(doc => query_b ? match_b.test(doc.doc_name) : true)
+        .filter(doc => query_c ? match_c.test(doc.doc_index) : true)
     } else {
       showingDocs = docs;
     }
@@ -178,9 +127,9 @@ class App extends Component {
                             icon={<FileCloudDownload />}
                         />
                       </TableRowColumn>
-                      <TableRowColumn>{doc.title}</TableRowColumn>
-                      <TableRowColumn>{doc.ver}</TableRowColumn>
-                      <TableRowColumn>{doc.index}</TableRowColumn>
+                      <TableRowColumn>{doc.doc_name}</TableRowColumn>
+                      <TableRowColumn>{doc.rev}</TableRowColumn>
+                      <TableRowColumn>{doc.doc_index}</TableRowColumn>
                     </TableRow>
                 ))}
 
