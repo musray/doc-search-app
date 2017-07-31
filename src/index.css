@@ -189,6 +189,7 @@ body, .app {
 
 .layout-wrapper {
     display: flex;
+    flex-direction: row;
     height: 100vh;
 }
 
@@ -199,7 +200,7 @@ body, .app {
 }
 
 .layout-search-result {
-    flex: 1 1 auto;
+    flex: 1 1 80%;
     /*padding: 20px;*/
     overflow: auto;
 }

@@ -84,6 +84,7 @@ class App extends Component {
                 onSubmit={(e) => this.submitQuery(e)}
             >
               <TextField
+                  style={{width: "80%"}}
                   name="query_a"
                   hintText="文件名称"
                   floatingLabelText="按文件名称查询 1"
@@ -91,6 +92,7 @@ class App extends Component {
                   ref={(el) => { this.query_a_input = el; }}
               /><br/>
               <TextField
+                  style={{width: "80%"}}
                   name="query_b"
                   hintText="文件名称"
                   floatingLabelText="按文件名称查询 2"
@@ -98,6 +100,7 @@ class App extends Component {
                   ref={(el) => { this.query_b_input = el; }}
               /><br/>
               <TextField
+                  style={{width: "80%"}}
                   name="query_c"
                   hintText="文件名称"
                   floatingLabelText="按文件编码查询"
