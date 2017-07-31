@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import escapeRegExp from 'escape-string-regexp'
 import './App.css';
 import TextField from 'material-ui/TextField';
@@ -18,7 +19,7 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 import FileCloudDownload from 'material-ui/svg-icons/file/cloud-download';
 import RaisedButton from 'material-ui/RaisedButton';
 import documents from './data/doc-list.json';
-import * as _ from 'lodash';
+import serializeForm from 'form-serialize';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -36,20 +37,21 @@ class App extends Component {
     this.setState({docs: documents})
   }
 
-  updateQuery_a(keyword) {
-    this.setState({ query_a: keyword.trim() });
-  }
-
-  updateQuery_b(keyword) {
-    this.setState({ query_b: keyword.trim() });
-  }
-
-  updateQuery_c(keyword) {
-    this.setState({ query_c: keyword.trim() });
+  submitQuery(e) {
+    e.preventDefault();
+    const formValues = serializeForm(e.target, { hash: true });
+    const { query_a, query_b, query_c } = formValues;
+    this.setState({ query_a, query_b, query_c });
   }
 
   clearQuery(query) {
-    this.setState({ query_a: '', query_b: '', query_c: '' })
+    this.setState({ query_a: '', query_b: '', query_c: '' });
+    this.query_a_input.input.value = '';
+    this.query_a_input.setState({hasValue: false});
+    this.query_b_input.input.value = '';
+    this.query_b_input.setState({hasValue: false});
+    this.query_c_input.input.value = '';
+    console.log(this.query_a_input);
   }
 
   render() {
@@ -59,9 +61,9 @@ class App extends Component {
     let hasQuery = query_a || query_b || query_c;
 
     if (hasQuery) {
-      const match_a = new RegExp(escapeRegExp(query_a), 'i');
-      const match_b = new RegExp(escapeRegExp(query_b), 'i');
-      const match_c = new RegExp(escapeRegExp(query_c), 'i');
+      const match_a = new RegExp(escapeRegExp(query_a? query_a: ''), 'i');
+      const match_b = new RegExp(escapeRegExp(query_b? query_b: ''), 'i');
+      const match_c = new RegExp(escapeRegExp(query_c? query_c: ''), 'i');
       showingDocs = docs
         .filter(doc => query_a ? match_a.test(doc.doc_name) : true)
         .filter(doc => query_b ? match_b.test(doc.doc_name) : true)
@@ -78,32 +80,42 @@ class App extends Component {
         <div className="layout-wrapper">
 
           <div className="layout-search-bar">
-            <TextField
-                value={query_a}
-                hintText="文件名称"
-                floatingLabelText="按文件名称查询 1"
-                type="text"
-                onChange={e => this.updateQuery_a(e.target.value)}
-            /><br/>
-            <TextField
-                value={query_b}
-                hintText="文件名称"
-                floatingLabelText="按文件名称查询 2"
-                type="text"
-                onChange={e => this.updateQuery_b(e.target.value)}
-            /><br/>
-            <TextField
-                value={query_c}
-                hintText="文件编码"
-                floatingLabelText="按文件编码查询"
-                type="text"
-                onChange={e => this.updateQuery_c(e.target.value)}
-            /><br/>
-            <FlatButton
-                label="重置查询条件"
-                secondary={true}
-                onClick={() => this.clearQuery()}
-            />
+            <form
+                onSubmit={(e) => this.submitQuery(e)}
+            >
+              <TextField
+                  name="query_a"
+                  hintText="文件名称"
+                  floatingLabelText="按文件名称查询 1"
+                  type="text"
+                  ref={(el) => { this.query_a_input = el; }}
+              /><br/>
+              <TextField
+                  name="query_b"
+                  hintText="文件名称"
+                  floatingLabelText="按文件名称查询 2"
+                  type="text"
+                  ref={(el) => { this.query_b_input = el; }}
+              /><br/>
+              <TextField
+                  name="query_c"
+                  hintText="文件名称"
+                  floatingLabelText="按文件编码查询"
+                  type="text"
+                  ref={(el) => { this.query_c_input = el; }}
+              /><br/>
+
+              <FlatButton
+                  type="submit"
+                  label="查询"
+                  secondary={true}
+              />
+              <FlatButton
+                  label="重置条件"
+                  secondary={true}
+                  onClick={() => this.clearQuery()}
+              />
+            </form>
           </div>
 
           <div className="layout-search-result">
