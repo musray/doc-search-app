@@ -136,10 +136,6 @@ class App extends Component {
             <Table style={{ width: "90%", marginLeft: "5%", marginRight: "5%" }}>
               <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
                 <TableRow>
-                  <TableHeaderColumn colSpan="4" style={{textAlign: "center"}}>
-                  </TableHeaderColumn>
-                </TableRow>
-                <TableRow>
                   <TableHeaderColumn>下载链接</TableHeaderColumn>
                   <TableHeaderColumn>文件名称 </TableHeaderColumn>
                   <TableHeaderColumn>文件版本</TableHeaderColumn>
