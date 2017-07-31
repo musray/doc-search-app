@@ -73,6 +73,7 @@ class App extends Component {
     }
     return (
       <div className="App">
+        <style type="text/css" dangerouslySetInnerHTML={{__html: "::-ms-clear {display: none;}"}} />
         <div className="App-header">
           <h2>工程部文档搜索<span className="big-icon">Beta</span></h2>
         </div>
@@ -84,6 +85,7 @@ class App extends Component {
                 onSubmit={(e) => this.submitQuery(e)}
             >
               <TextField
+                  className="ms-style-clear"
                   style={{width: "80%"}}
                   name="query_a"
                   hintText="文件名称"

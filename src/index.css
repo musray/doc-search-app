@@ -212,3 +212,8 @@ body, .app {
     /*opacity: 0*/
 }
 
+.ms-style-clear::ms-clear {
+    width: 0px;
+    height: 0px;
+}
+
