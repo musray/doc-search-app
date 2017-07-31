@@ -51,7 +51,7 @@ class App extends Component {
     this.query_b_input.input.value = '';
     this.query_b_input.setState({hasValue: false});
     this.query_c_input.input.value = '';
-    console.log(this.query_a_input);
+    this.query_c_input.setState({hasValue: false});
   }
 
   render() {
